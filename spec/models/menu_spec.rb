@@ -35,9 +35,7 @@ RSpec.describe Menu, type: :model do
   end
 
   it 'is invalid when a description bigger than 150 character' do
-    random_character = (0...160).map { ('a'..'z').to_a[rand(26)] }.join
-
-    menu = FactoryBot.build(:menu, description: random_character)
+    menu = FactoryBot.build(:menu, description: Faker::String.random(length: 160))
     menu.valid?
 
     expect(menu.errors[:description]).to include("is too long (maximum is 150 characters)")
