@@ -1,2 +1,22 @@
-<h1>Menus#index</h1>
-<p>Find me in app/views/menus/index.html.erb</p>
+<h1> List of Menus </h1>
+<table>
+  <thead>
+    <tr>
+        <td><b>Name</b></td>
+        <td><b>Description</b></td>
+        <td><b>Price</b></td>
+        <td><b>Category</b></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @menus.each do |menu| %>
+      <tr>
+        <td><%= menu.name %></td>
+        <td><%= menu.description %></td>
+        <td><%= menu.price %></td>
+        <td><%= menu.category.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<a href="/menus/new">New Menu</a>
