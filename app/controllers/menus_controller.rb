@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   def index
-    @menus = params[:letter].nil? ? Menu.all : Food.by_letter(params[:letter])
+    @menus = params[:letter] ? Menu.by_letter(params[:letter]) : Menu.all
   end
 
   def new
@@ -27,12 +27,23 @@ class MenusController < ApplicationController
 
   def update
     @menu = Menu.find_by(id: params[:id])
-
     @menu.update(menu_params)
+    
+    if @menu.save
+      redirect_to menu_url
+    else
+      render :edit, status: 422
+    end
   end
 
   def show
     @menu = Menu.find_by(id: params[:id])
+  end
+
+  def destroy
+    @menu = Menu.find_by(id: params[:id])
+    @menu.destroy
+    redirect_to menu_url
   end
 
   def menu_params
