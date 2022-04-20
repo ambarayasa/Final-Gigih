@@ -5,4 +5,11 @@ FactoryBot.define do
     price { 10000.0 }
     association :category, factory: :category
   end
+
+  factory :invalid_food, parent: :food do
+    name { nil }
+    description { nil }
+    price { 10000.0 }
+    association :category, factory: :category
+  end
 end
