@@ -7,6 +7,7 @@ class MenusController < ApplicationController
 
   def new
     @menu = Menu.new
+    @category = set_category
   end
 
   def create
@@ -24,6 +25,7 @@ class MenusController < ApplicationController
   end
 
   def edit
+    @category = set_category
   end
 
   def update
@@ -56,5 +58,9 @@ class MenusController < ApplicationController
 
   def set_menu
     @menu = Menu.find_by(id: params[:id])
+  end
+
+  def set_category
+    @category = Category.all.collect { |category| [ category.name, category.id ] }
   end
 end
