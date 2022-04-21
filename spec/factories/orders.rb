@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :order do
     date_order { "20/04/2022" }
-    email { Faker::Internet.free_email }
+    email { "test@gmail.com" }
     total_price { 50000.0 }
     status { "NEW" }
   end
