@@ -7,10 +7,18 @@ class Order < ApplicationRecord
     validates :status, presence: true
 
     def add_menu(menus)
+        if menus.nil
+            self.errors.add(:order, "at least have 1 menu")
+            return
+        end
         menus.each do |menu|
-            if Menu.find_by_id(menu[:id])
+            if Menu.find_by_id(menu[:id]).present?
                 self.order_details << OrderDetail.new(menu_id: menu[:id], quantity: menu[:quantity], unit_price: Menu.find_by_id(menu[:id]).price)
+            else
+                self.errors.add(:menu, "not exists")
             end
+        else
+            self.errors.add(:order, "quantity at least 1 item") if menu[:quantity].to_i < 1
         end
     end
 
