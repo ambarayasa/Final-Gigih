@@ -2,7 +2,7 @@
 <%= form_with model: @menu do |form| %>
   <%= form.text_field :name, placeholder: "name" %>
   <%= form.text_field :description, placeholder: "description" %>
-  <%= form.text_field :price, placeholder: "price" %>
+  <%= form.number_field :price, placeholder: "price" %>
   <%= form.label :category %>
   <%= form.select :category_id, Category.all.collect { |category| [ category.name, category.id ] } %>
   <%= form.submit %>

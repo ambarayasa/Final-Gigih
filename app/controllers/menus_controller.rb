@@ -28,11 +28,15 @@ class MenusController < ApplicationController
 
   def update
     @menu.update(menu_params)
-    
-    if @menu.save
-      redirect_to menu_url
-    else
-      render :edit, status: 422
+
+    respond_to do |format|
+      if @menu.save
+        format.html { redirect_to menus_path(@menu) }
+        format.json { render :index, status: :created, location: @menu }
+      else
+        format.html { render :edit, status: 422 }
+        format.json { render json: @menu.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -41,7 +45,7 @@ class MenusController < ApplicationController
 
   def destroy
     @menu.destroy
-    redirect_to menu_url
+    redirect_to "/menus"
   end
 
   private

@@ -1,2 +1,9 @@
-<h1>Menus#edit</h1>
-<p>Find me in app/views/menus/edit.html.erb</p>
+<h3>Edit @menu.name</h3>
+<%= form_with model: @menu do |form| %>
+  <%= form.text_field :name, placeholder: "name" %>
+  <%= form.text_field :description, placeholder: "description" %>
+  <%= form.text_field :price, placeholder: "price" %>
+  <%= form.label :category %>
+  <%= form.select :category_id, Category.all.collect { |category| [ category.name, category.id ] } %>
+  <%= form.submit %>
+<% end %>
