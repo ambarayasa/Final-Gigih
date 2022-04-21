@@ -17,7 +17,6 @@ class Order < ApplicationRecord
             else
                 self.errors.add(:menu, "not exists")
             end
-        else
             self.errors.add(:order, "quantity at least 1 item") if menu[:quantity].to_i < 1
         end
     end

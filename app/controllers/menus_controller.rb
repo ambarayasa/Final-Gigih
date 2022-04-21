@@ -1,4 +1,6 @@
 class MenusController < ApplicationController
+  before_action :set_menu, only: %i[ show edit update destroy ]
+
   def index
     @menus = params[:letter] ? Menu.by_letter(params[:letter]) : Menu.all
   end
@@ -22,11 +24,9 @@ class MenusController < ApplicationController
   end
 
   def edit
-    @menu = Menu.find_by(id: params[:id])
   end
 
   def update
-    @menu = Menu.find_by(id: params[:id])
     @menu.update(menu_params)
     
     if @menu.save
@@ -37,16 +37,20 @@ class MenusController < ApplicationController
   end
 
   def show
-    @menu = Menu.find_by(id: params[:id])
   end
 
   def destroy
-    @menu = Menu.find_by(id: params[:id])
     @menu.destroy
     redirect_to menu_url
   end
 
+  private
+
   def menu_params
     params.require(:menu).permit(:name, :description, :price, :category_id)
+  end
+
+  def set_menu
+    @menu = Menu.find_by(id: params[:id])
   end
 end

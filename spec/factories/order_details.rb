@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :order_detail do
-    order { nil }
-    menu { nil }
-    quantity { 1 }
-    subtotal { 1.5 }
-    unit_price { 1.5 }
+    association :order
+    association :menu
+    quantity { 2 }
+    subtotal { 20000.0 }
+    unit_price { 10000.0 }
   end
 end
