@@ -33,7 +33,7 @@ class MenusController < ApplicationController
 
     respond_to do |format|
       if @menu.save
-        format.html { redirect_to menus_path(@menu) }
+        format.html { redirect_to @menu }
         format.json { render :index, status: :updated, location: @menu }
       else
         format.html { render :edit, status: 422 }

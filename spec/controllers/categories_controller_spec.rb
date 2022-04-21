@@ -77,7 +77,7 @@ RSpec.describe CategoriesController do
     
           it "redirects to the category" do
             patch :update, params: { id: @category, category: attributes_for(:category) }
-            expect(response).to redirect_to @category
+            expect(response).to redirect_to categories_url
           end
         end
     
@@ -108,7 +108,7 @@ RSpec.describe CategoriesController do
     
         it "redirects to categories#index" do
           delete :destroy, params: { id: @category }
-          expect(response).to redirect_to category_path
+          expect(response).to redirect_to categories_url
         end
     end
 end
