@@ -7,7 +7,7 @@ class Order < ApplicationRecord
     validates :status, presence: true
 
     def add_menu(menus)
-        if menus.nil
+        if menus.nil?
             self.errors.add(:order, "at least have 1 menu")
             return
         end
@@ -20,6 +20,7 @@ class Order < ApplicationRecord
             self.errors.add(:order, "quantity at least 1 item") if menu[:quantity].to_i < 1
         end
     end
+
 
     def sum_subtotal
         self.order_details.each do |order_detail|

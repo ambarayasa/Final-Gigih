@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def new
-    orders = Order.new(order_params)
+    order = Order.new(order_params)
     order.add_menu(menu_order_params[:menus])
   end
 
