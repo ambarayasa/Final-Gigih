@@ -21,7 +21,6 @@ class Order < ApplicationRecord
         end
     end
 
-
     def sum_subtotal
         self.order_details.each do |order_detail|
             order_detail.sum_subtotal
@@ -32,5 +31,9 @@ class Order < ApplicationRecord
         self.order_details.each do |order_detail|
           self.total_price = self.total_price + order_detail.subtotal
         end
+    end
+
+    def change_status_paid
+        self.update(status: "PAID")
     end
 end

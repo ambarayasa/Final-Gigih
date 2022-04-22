@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      resources :orders
+      patch '/orders/:id/paid', to: 'orders#paid'
+    end
+  end
+  
   resources :categories
   resources :menus
   resources :orders
