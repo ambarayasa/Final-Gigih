@@ -35,7 +35,7 @@ class Api::V1::CategoriesController < ApplicationController
 
     def destroy
         @category.destroy
-        render json: @category, status: 200
+        render json: 200
     end
 
     private

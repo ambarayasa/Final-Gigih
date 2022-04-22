@@ -51,7 +51,7 @@ class Api::V1::OrdersController < ApplicationController
     def destroy
         @order.order_details.destroy_all
         @order.destroy
-        render json: @order, status: 200
+        render json: 200
     end
 
     def paid
