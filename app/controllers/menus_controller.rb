@@ -3,8 +3,6 @@ class MenusController < ApplicationController
 
   def index
     @menus = params[:letter] ? Menu.by_letter(params[:letter]) : Menu.all
-
-    render json: @menus
   end
 
   def new
@@ -45,7 +43,6 @@ class MenusController < ApplicationController
   end
 
   def show
-    render json: @menu
   end
 
   def destroy
