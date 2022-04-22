@@ -48,12 +48,26 @@ class Api::V1::OrdersController < ApplicationController
       }
     end
 
+    def destroy
+        @order.order_details.destroy_all
+        @order.destroy
+        render json: @order, status: 200
+    end
+
     def paid
         @order.change_status_paid
         render json: {
             order: @order,
             menus: @order.menus
-          }
+        }
+    end
+
+    def canceled
+        Order.change_status_canceled
+        @order = Order.all
+        render json: {
+            order: @order
+        }
     end
   
     private
