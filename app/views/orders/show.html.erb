@@ -1,0 +1,22 @@
+<h1> Order </h1>
+<table>
+  <thead>
+    <tr>
+        <td><b>Menu</b></td>
+        <td><b>Quantity</b></td>
+        <td><b>Price</b></td>
+        <td><b>Subtotal</b></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_detail.each do |d| %>
+      <tr>
+        <td><%= d.menu.name %></td>
+        <td><%= d.quantity %></td>
+        <td><%= d.unit_price %></td>
+        <td><%= d.subtotal %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<a href="/menus/new">New Menu</a>

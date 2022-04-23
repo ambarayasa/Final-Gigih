@@ -1,0 +1,5 @@
+<h3>Create a Category</h3>
+<%= form_with model: @category do |form| %>
+  <%= form.text_field :name, placeholder: "name" %>
+  <%= form.submit %>
+<% end %>
