@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :menus
       resources :orders
       get '/reports', to: 'reports#report'
-      patch '/orders/canceled', to: 'orders#canceled'
+      patch '/orders/:id/canceled', to: 'orders#canceled'
       patch '/orders/:id/paid', to: 'orders#paid'
       
     end

@@ -35,7 +35,7 @@ class Order < ApplicationRecord
         self.update(status: "PAID")
     end
 
-    def self.change_status_canceled
-        self.where(status: "NEW").update_all(status: "CANCELED")
+    def change_status_canceled
+        self.update(status: "CANCELED")
     end
 end

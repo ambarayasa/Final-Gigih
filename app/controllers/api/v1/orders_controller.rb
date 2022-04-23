@@ -1,6 +1,6 @@
 class Api::V1::OrdersController < ApplicationController
     protect_from_forgery with: :null_session
-    before_action :set_order, only: %i[ show edit update destroy paid ]
+    before_action :set_order, only: %i[ show edit update destroy paid canceled]
   
     def index
       @orders = Order.all
@@ -63,8 +63,7 @@ class Api::V1::OrdersController < ApplicationController
     end
 
     def canceled
-        Order.change_status_canceled
-        @order = Order.all
+        @order.change_status_canceled
         render json: {
             order: @order
         }
