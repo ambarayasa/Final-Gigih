@@ -1,9 +1,0 @@
-<h3>Create a Menu</h3>
-<%= form_with model: @menu do |form| %>
-  <%= form.text_field :name, placeholder: "name" %>
-  <%= form.text_field :description, placeholder: "description" %>
-  <%= form.number_field :price, placeholder: "price" %>
-  <%= form.label :category %>
-  <%= form.select :category_id, @category %>
-  <%= form.submit %>
-<% end %>
