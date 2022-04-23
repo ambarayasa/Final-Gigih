@@ -4,7 +4,6 @@
     <tr>
         <td><b>Order ID</b></td>
         <td><b>Email</b></td>
-        <td><b>Date Order</b></td>
         <td><b>Status</b></td>
         <td><b>Action</b></td>
     </tr>
@@ -14,7 +13,6 @@
       <tr>
         <td>Order <%= order.id %></td>
         <td><%= order.email %></td>
-        <td><%= order.date_order %></td>
         <td><%= order.status %></td>
         <td><%= link_to "Show", order_path(order) %></td>
         <td><%= link_to "Edit", edit_order_path(order) %></td>

@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:email, :order_date)
+    params.require(:order).permit(:email)
   end
 
   def menu_order_params

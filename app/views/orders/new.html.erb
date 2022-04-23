@@ -1,6 +1,5 @@
 <h3>Create an Order</h3>
 <%= form_with model: @order do |form| %>
   <%= form.text_field :email, placeholder: "email" %>
-  <%= form.text_field :order_date, placeholder: "order date" %>
   <%= form.submit %>
 <% end %>

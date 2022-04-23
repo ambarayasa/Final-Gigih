@@ -73,7 +73,7 @@ class Api::V1::OrdersController < ApplicationController
     private
   
     def order_params
-      params.require(:order).permit(:email, :date_order)
+      params.require(:order).permit(:email)
     end
   
     def menu_order_params

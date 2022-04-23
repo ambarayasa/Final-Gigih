@@ -1,9 +1,7 @@
 class Order < ApplicationRecord
     has_many :order_details
     has_many :menus, through: :order_details
-
     validates :email, presence: true, format: { with: /\A([^\}\{\]\[@\s\,]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i , message: "is invalid" }
-    validates :date_order, presence: true
     validates :status, presence: true
 
     def add_menu(menus)
@@ -15,7 +13,7 @@ class Order < ApplicationRecord
             if Menu.find_by_id(menu[:id]).present?
                 self.order_details << OrderDetail.new(menu_id: menu[:id], quantity: menu[:quantity], unit_price: Menu.find_by_id(menu[:id]).price)
             else
-                self.errors.add(:menu, "not exists")
+                self.errors.add(:menu, "not exist")
             end
             self.errors.add(:order, "quantity at least 1 item") if menu[:quantity].to_i < 1
         end

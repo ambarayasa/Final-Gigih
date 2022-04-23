@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :categories
       resources :menus
       resources :orders
+      get '/reports', to: 'reports#report'
       patch '/orders/canceled', to: 'orders#canceled'
       patch '/orders/:id/paid', to: 'orders#paid'
       
